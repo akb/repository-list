@@ -27,7 +27,7 @@ to the appropriate version of NodeJS.
 Install global npm dependencies (commands) by entering the following into the
 command line:
 
-    npm install -g http-server less
+    npm install -g http-server less browserify watchify
 
 ### Local dependencies
 
@@ -48,7 +48,11 @@ automated build system and development server.
 for changes in the source code. When code is updated, the appropriate build
 step will be automatically run to use the new code. Specifically:
 
-- Updating the files in src/static will update them on the server (handled by
+- Upon starting the server, vendor JS will be bundled and copied to the server
+  (handled by `bin/build-vendor`)
+- Updating the files in `src/static` will update them on the server (handled by
   `bin/watch-static`)
 - Updating the LESS source will rebuild and bundle the client CSS
   (handled by `bin/watch-less`)
+- Updating the client source will rebuild and bundle the client JS
+  (handled by `bin/watch-client`)

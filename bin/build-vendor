@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+browserify \
+  --outfile public/vendor.js \
+  --verbose \
+  --debug \
+  --require react-dom \
+  --require react

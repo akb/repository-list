@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+node_modules/watchify/bin/cmd.js src/client/index.js \
+  --outfile public/index.js \
+  --verbose \
+  --debug \
+  --transform [ babelify --presets [ es2015 react ] ] \
+  --exclude react-dom \
+  --exclude react &
+
+wait
+exit 0
