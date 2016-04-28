@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
-browserify \
-  --outfile public/vendor.js \
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+DESTINATION_PATH=$BASEPATH/public/vendor.js
+
+$BASEPATH/node_modules/browserify/bin/cmd.js \
+  --outfile $DESTINATION_PATH \
   --verbose \
   --debug \
   --require react-dom \
   --require react
+
+# NOTE: This uses BSD stat syntax and will likely not work under Linux
+size=$(stat -f "%z" ${DESTINATION_PATH})
+
+echo "wrote $size bytes to $DESTINATION_PATH"

@@ -9,8 +9,9 @@ Installation
 
 Repository List requires the following of the local system:
 
-- A Unix-like operating system with `bash` installed
-- NodeJS
+- A Unix-like operating system
+- bash
+- NodeJS/npm
 - nvm
 
 ### nvm
@@ -22,25 +23,17 @@ install` from within the `repository-list` root directory to initially install
 the correct version of NodeJS. Subsequently, the `nvm use` command will switch
 to the appropriate version of NodeJS.
 
-### Global npm packages
+### Dependencies
 
-Install global npm dependencies (commands) by entering the following into the
-command line:
-
-    npm install -g http-server less browserify watchify
-
-### Local dependencies
-
-Once all global dependencies have been installed then the dependencies for
-local development and runtime may be installed by executing `npm install` in
-the `repository-list` root directory.
+Dependencies for local development and runtime may be installed by executing
+`npm install` in the `repository-list` root directory.
 
 Development Scripts
 -------------------
 
-The `repository-list/bin` directory contains scripts useful for developing
-Repository List. These scripts are written in bash and NodeJS and provide an
-automated build system and development server.
+The `bin` directory contains scripts useful for developing Repository List.
+These scripts are written in bash and NodeJS and provide an automated build
+system and development server.
 
 ### Development Server
 

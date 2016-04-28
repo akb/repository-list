@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+bin/build-css
 bin/build-vendor
 
 bin/watch-client &
@@ -7,8 +10,7 @@ bin/watch-less &
 bin/watch-static &
 
 #nodemon src/server/index.js &
-
-http-server public
+$BASEPATH/node_modules/http-server/bin/http-server public &
 
 wait
 exit 0

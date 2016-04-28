@@ -6,7 +6,7 @@ SOURCE_PATH=$BASEPATH/src/client/index.js
 DESTINATION_PATH=$BASEPATH/public/index.js
 
 
-$BASEPATH/node_modules/watchify/bin/cmd.js $SOURCE_PATH \
+$BASEPATH/node_modules/browserify/bin/cmd.js $SOURCE_PATH \
   --outfile $DESTINATION_PATH \
   --verbose \
   --debug \

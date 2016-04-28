@@ -41,12 +41,17 @@ button.button-primary {
     vertical-align: middle;
     text-align: center;
     color: @foreground-light;
+    cursor: pointer;
 
     font-size: 17px;
 
     &.nav-item-selected {
       color: @primary-action;
       border-left: 3px solid @primary-action;
+    }
+
+    &:hover {
+      color: @primary-action;
     }
   }
 

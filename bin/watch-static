@@ -55,6 +55,4 @@ chokidar.watch(WATCH_PATHS, {
   persistent : true,
   ignored    : /~$/,
   cwd        : BASE_PATH
-})
-  .on('add', copy)
-  .on('change', copy);
+}).on('change', copy);
