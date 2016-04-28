@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+"use strict";
+
+
+const path = require('path'),
+      fs   = require('fs');
+
+
+const chokidar = require('graceful-chokidar');
+
+
+const BASE_PATH = path.resolve(__dirname, '..') + '/';
+
+const DEPENDENCY_BASE_PATH = path.resolve(BASE_PATH, 'node_modules');
+const STATIC_BASE_PATH = path.resolve(BASE_PATH, 'src', 'static');
+
+
+const WATCH_PATHS = [
+  STATIC_BASE_PATH,
+  path.join(DEPENDENCY_BASE_PATH, 'normalize.css', 'normalize.css')
+];
+
+
+const PUBLIC_PATH = path.resolve(BASE_PATH, 'public');
+
+
+function copy(source, stats) {
+  let dest = destination(source);
+  log(
+    source.replace(BASE_PATH, ''),
+    stats.size,
+    dest.replace(BASE_PATH, '')
+  );
+  fs.createReadStream(source).pipe(fs.createWriteStream(dest))
+}
+
+
+function destination(p) {
+  if (p.match(new RegExp(`^${DEPENDENCY_BASE_PATH}`))) {
+    return path.join(PUBLIC_PATH, path.basename(p));
+  } else if (p.match(new RegExp(`^${STATIC_BASE_PATH}`))) {
+    return path.join(PUBLIC_PATH, p.replace(STATIC_BASE_PATH, ''));
+  } else {
+    return p;
+  }
+}
+
+
+function log(source, size, dest) {
+  console.log(`${source} changed writing ${size} bytes to ${dest}`);
+}
+
+
+chokidar.watch(WATCH_PATHS, {
+  persistent : true,
+  ignored    : /~$/,
+  cwd        : BASE_PATH
+})
+  .on('add', copy)
+  .on('change', copy);

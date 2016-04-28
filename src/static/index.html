@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Repositories</title>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body>
+    <div class="scene">
+      <nav>
+        <div class="nav-item" title="dashboard">
+          <i class="fa fa-tachometer" aria-hidden="true"></i>
+        </div>
+        <div class="nav-item nav-item-selected" title="repositories">
+          <i class="fa fa-tasks" aria-hidden="true"></i>
+        </div>
+        <div class="nav-item" title="data centers">
+          <i class="fa fa-building" aria-hidden="true"></i>
+        </div>
+        <div class="nav-item" title="user management">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="nav-item" title="configuration">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </div>
+        <div class="nav-item" title="documentation">
+          <i class="fa fa-align-left" aria-hidden="true"></i>
+        </div>
+      </nav>
+
+      <section class="repositories" title="repositories">
+        <header>
+          <div class="pure-form">
+            <div class="filter">
+              <label for="filter-by">Filter by</label>
+              <select class="pure-input" name="filter-by">
+                <option value="0">All accounts</option>
+                <option value="1">Acme</option>
+                <option value="2">Docker</option>
+              </select>
+            </div>
+          </div>
+          <button class="pure-button button-primary">New repository</button>
+        </header>
+
+        <ul>
+          <li>
+            <div class="repository-primary">
+              <span class="repository-namespace">docker</span>
+              <span class="separator">/</span>
+              <span class="repository-name">a-cool-repo</span>
+              <span class="repository-private">private</span>
+            </div>
+          </li>
+          <li>
+            <div class="repository-primary">
+              <span class="repository-namespace">awesome-org-right-here</span>
+              <span class="separator">/</span>
+              <span class="repository-name">master</span>
+            </div>
+            <div class="repository-secondary">
+              This is the description, not the README, of this wonderful repo.
+            </div>
+          </li>
+        </ul>
+
+        <div class="paginator">
+          <button class="pure-button" title="previous">
+            <i class="fa fa-chevron-left"></i>
+          </button>
+          <button class="pure-button" title="page 1">1</button>
+          <button class="pure-button" title="page 2">2</button>
+          <button class="pure-button" title="page 3">3</button>
+          <button class="pure-button" title="page 4">4</button>
+          <button class="pure-button" title="next">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

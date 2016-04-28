@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# build vendor bundle
+# browserify \
+#   --outfile public/vendor.js \
+#   --verbose \
+#   --debug \
+#   --require react-dom \
+#   --require react
+
+bin/watch-less &
+bin/watch-static &
+
+#watchify src/client.js \
+#  --outfile public/client.js \
+#  --verbose \
+#  --debug \
+#  --exclude react-dom \
+#  --exclude react &
+
+#nodemon src/server/index.js &
+
+http-server public
+
+wait
+exit 0

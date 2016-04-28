@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+"use strict";
+
+
+const fs   = require('fs'),
+      path = require('path');
+
+
+const chokidar = require('graceful-chokidar'),
+      less     = require('less');
+
+
+const BASE_PATH        = path.resolve(__dirname, '..') + '/',
+      WATCH_PATH       = path.join(BASE_PATH, 'src', 'less'),
+      SOURCE_PATH      = path.resolve(WATCH_PATH, 'index.less'),
+      DESTINATION_PATH = path.resolve(BASE_PATH, 'public', 'index.css');
+
+
+function compile(filepath, stats) {
+  less.render(fs.readFileSync(SOURCE_PATH).toString('utf-8'), {
+    filename  : SOURCE_PATH,
+    sourceMap : {sourceMapFileInline:true}
+  }, (err, output) => {
+      if (err) {
+        return console.log('Error compiling LESS:', err);
+      }
+      fs.writeFileSync(DESTINATION_PATH, output.css);
+      let stats = fs.statSync(DESTINATION_PATH);
+      log(
+        filepath.replace(BASE_PATH, ''),
+        stats.size,
+        DESTINATION_PATH.replace(BASE_PATH, '')
+      )
+    }
+  )
+}
+
+
+function log(source, size, dest) {
+  console.log(`${source} changed, wrote ${size} bytes to ${dest}`);
+}
+
+
+chokidar.watch(WATCH_PATH, {
+  persistent : true,
+  ignored    : /~$/
+})
+  .on('add', compile)
+  .on('change', compile);

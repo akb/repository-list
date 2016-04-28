@@ -1,0 +1,16 @@
+{
+  "name": "docker-repos",
+  "version": "1.0.0",
+  "description": "Repository List: A web application for browsing Docker repositories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "graceful-chokidar": "^0.1.0",
+    "less": "^2.6.1",
+    "normalize.css": "^4.1.1"
+  }
+}
