@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+SOURCE_PATH=$BASEPATH/src/client/index.js
+DESTINATION_PATH=$BASEPATH/public/index.js
+
+
+$BASEPATH/node_modules/watchify/bin/cmd.js $SOURCE_PATH \
+  --outfile $DESTINATION_PATH \
+  --verbose \
+  --debug \
+  --transform [ babelify --presets [ es2015 react ] ] \
+  --exclude react-dom \
+  --exclude react

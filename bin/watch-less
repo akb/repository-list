@@ -44,6 +44,4 @@ function log(source, size, dest) {
 chokidar.watch(WATCH_PATH, {
   persistent : true,
   ignored    : /~$/
-})
-  .on('add', compile)
-  .on('change', compile);
+}).on('change', compile);

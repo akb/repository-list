@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+SOURCE_PATH=$BASEPATH/src/less/index.less
+DESTINATION_PATH=$BASEPATH/public/index.css
+
+
+$BASEPATH/node_modules/less/bin/lessc \
+  --source-map-map-inline \
+  $SOURCE_PATH $DESTINATION_PATH
