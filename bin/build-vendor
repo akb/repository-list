@@ -8,6 +8,7 @@ $BASEPATH/node_modules/browserify/bin/cmd.js \
   --outfile $DESTINATION_PATH \
   --verbose \
   --debug \
+  --require lru-cache \
   --require react-dom \
   --require react
 

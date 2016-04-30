@@ -9,8 +9,7 @@ bin/watch-client &
 bin/watch-less &
 bin/watch-static &
 
-#nodemon src/server/index.js &
-$BASEPATH/node_modules/http-server/bin/http-server public &
+$BASEPATH/node_modules/nodemon/bin/nodemon.js src/server/index.js &
 
 wait
 exit 0
