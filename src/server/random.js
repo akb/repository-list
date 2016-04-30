@@ -14,7 +14,7 @@ function sample(array, count) {
     .fill(Math.random() * array.length | 0)
     .map((i) => array[i]);
 
-  return count === 1 ? sample[0] : sample;
+  return count || 1 === 1 ? sample[0] : sample;
 }
 
 

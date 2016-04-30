@@ -7,7 +7,17 @@ export var api = {};
 api.cache = lru({max:25, maxAge:5000});
 
 
-api.get = (url) => {
+api.query = (obj) => {
+  let keys = Object.keys(obj || {}).sort();
+  if (!keys.length) return '';
+  return '?' + keys
+    .map((k) => obj[k] && `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`)
+    .join('&');
+};
+
+
+api.get = (path, query) => {
+  let url = path + api.query(query);
   if (api.cache.has(url)) {
     return api.cache.get(url);
   }
@@ -22,5 +32,5 @@ api.get = (url) => {
 };
 
 
-api.repositories = () => api.get('/api/repositories');
+api.repositories = (query) => api.get('/api/repositories', query);
 api.namespaces = () => api.get('/api/namespaces');

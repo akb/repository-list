@@ -6,12 +6,15 @@ import Scene from './scene';
 
 
 const scene = {
-  tab: util.prop('repositories')
+  tab: util.prop('repositories'),
+  repositories: {
+    namespace: util.prop('')
+  }
 };
 
 
 global.redraw = () => {
-  ReactDOM.render(<Scene model={scene} />, document.querySelector('.stage'));
+  ReactDOM.render(<Scene {...scene} />, document.querySelector('.stage'));
 };
 
 
