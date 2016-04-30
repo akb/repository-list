@@ -11,5 +11,6 @@ $BASEPATH/node_modules/watchify/bin/cmd.js $SOURCE_PATH \
   --verbose \
   --debug \
   --transform [ babelify --presets [ es2015 react ] ] \
+  --exclude lru-cache \
   --exclude react-dom \
   --exclude react

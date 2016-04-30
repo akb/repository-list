@@ -6,7 +6,7 @@ import Paginator from './paginator';
 export default function Repositories(props) {
   return <section className="repositories" title="Repositories">
     <Header />
-    <RepositoryList />
+    <RepositoryList repositories={api.repositories()} />
     <Paginator />
   </section>;
 }
