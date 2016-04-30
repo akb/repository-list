@@ -4,9 +4,14 @@ import Paginator from './paginator';
 
 
 export default function Repositories(props) {
+  const query     = {},
+        namespace = props.namespace();
+
+  if (namespace) query.namespace = namespace;
+
   return <section className="repositories" title="Repositories">
-    <Header />
-    <RepositoryList repositories={api.repositories()} />
+    <Header namespace={props.namespace} />
+    <RepositoryList repositories={api.repositories(query)} />
     <Paginator />
   </section>;
 }
