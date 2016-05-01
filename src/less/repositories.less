@@ -1,0 +1,65 @@
+.repositories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: @baseline * 2;
+  width: 100%;
+
+  header {
+    color: @foreground-med;
+    padding: @baseline * 2;
+
+    .filter {
+      display: flex;
+
+      label {
+        font-size: @font-size-2;
+        line-height: @line-height-2;
+      }
+
+      .select-box {
+        margin-left: @baseline;
+      }
+    }
+  }
+
+  > ul {
+    overflow: auto;
+    padding: 0;
+    margin: 0 @baseline * 2 @baseline * 2 @baseline * 2;
+  }
+
+  li {
+    padding: @baseline * 2 0;
+    border-top: 1px solid @foreground-light;
+    list-style-type: none;
+    text-indent: 0;
+
+    &:last-child {
+      border-bottom: 1px solid @foreground-light;
+    }
+  }
+
+  .repository-name {
+    font-weight: bold;
+  }
+
+  .repository-primary {
+    font-size: @font-size-2;
+    line-height: @line-height-2;
+  }
+
+  .repository-secondary {
+    margin-top: @baseline;
+    color: @foreground-med;
+    max-width: @baseline * 65;
+  }
+
+  .repository-private {
+    color: @warning;
+    border: 1px solid @warning;
+    padding: 0 @baseline;
+    font-size: 11px;
+    margin-left: @baseline;
+  }
+}

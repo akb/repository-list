@@ -1,0 +1,47 @@
+.select-box {
+  border-radius: 3px;
+  border: 1px solid @foreground-med;
+  display: inline-block;
+  font-size: @font-size-2;
+  height: @baseline * 3;
+  line-height: @baseline * 3;
+  margin-top: @baseline / 2;
+  overflow: hidden;
+  position: relative;
+
+  select {
+    cursor: pointer;
+    padding-right: @baseline * 3;
+    -webkit-appearance: none;
+    background-image: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: @foreground-med;
+    display: inline-block;
+    height: @baseline * 3;
+    line-height: @baseline * 3;
+    padding-left: @baseline;
+    text-align: middle;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      cursor: default;
+      color: @foreground-light;
+    }
+  }
+
+  i {
+    position: absolute;
+    right: @baseline;
+    height: @baseline * 3;
+    line-height: @baseline * 3;
+    text-align: middle;
+    pointer-events: none;
+    padding-left: @baseline;
+  }
+}

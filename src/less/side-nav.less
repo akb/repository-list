@@ -1,0 +1,19 @@
+.nav-item {
+  height: @baseline * 6;
+  line-height: @baseline * 6;
+  vertical-align: middle;
+  text-align: center;
+  color: @foreground-light;
+  cursor: pointer;
+
+  font-size: @font-size-3;
+
+  &.nav-item-selected {
+    color: @primary-action;
+    border-left: 3px solid @primary-action;
+  }
+
+  &:hover {
+    color: @primary-action;
+  }
+}
