@@ -8,7 +8,9 @@ import Scene from './scene';
 const scene = {
   tab: util.prop('repositories'),
   repositories: {
-    namespace: util.prop('')
+    namespace : util.prop(''),
+    offset    : util.prop(0),
+    total     : util.prop(1)
   }
 };
 
