@@ -16,9 +16,11 @@ class Repository {
       faker.hacker.noun()
     ].join('-'));
 
-    this.isPrivate = Math.random() < 0.5;
+    this.isPrivate = random.flip();
 
-    this.description = faker.hacker.phrase();
+    if (random.flip()) {
+      this.description = faker.hacker.phrase();
+    }
   }
 }
 

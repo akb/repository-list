@@ -21,12 +21,16 @@ server.get('/api/repositories', (request, response) => {
   } else {
     filtered = repositories;
   }
-  response.status(200).json(filtered)
+  setTimeout(() => {
+    response.status(200).json(filtered)
+  }, 3000);
 });
 
 
 server.get('/api/namespaces', (request, response) => {
-  response.status(200).json(namespaces.sort());
+  setTimeout(() => {
+    response.status(200).json(namespaces.sort());
+  }, 2000);
 });
 
 
