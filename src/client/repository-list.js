@@ -14,11 +14,9 @@ const RepositoryListItem = (props) =>
   <li>
     <div className="repository-primary">
       <span className="repository-namespace">{props.namespace}</span>
-      <span className="separator">/</span>
+      <span className="separator">&nbsp;/&nbsp;</span>
       <span className="repository-name">{props.name}</span>
       {props.isPrivate && <span className="repository-private">private</span>}
     </div>
-    <div className="repository-secondary">
-      {props.description}
-    </div>
+    {props.description && <div className="repository-secondary">{props.description}</div>}
   </li>;

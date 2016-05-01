@@ -1,3 +1,6 @@
+import SelectBox from './select-box';
+
+
 export default function Header(props) {
   const namespace  = props.namespace,
         namespaces = api.namespaces();
@@ -12,17 +15,17 @@ export default function Header(props) {
   };
 
   return <header>
-    <div className="filter">
-      <label for="filter-by">Filter by</label>
-      <select name="filter-by"
-              defaultValue={namespace() || 0}
-              onChange={onChange}>
-        <option value="">All accounts</option>
-        {namespaces.map(
-          (n) => <option key={n} value={n}>{n}</option>
-        )}
-      </select>
+    <div className="layout-split">
+      <div className="filter">
+        <label for="filter-by">Filter&nbsp;by</label>
+        <SelectBox
+          name="filter-by"
+          defaultValue={namespace() || 0}
+          onChange={onChange}
+          nullOption="All accounts"
+          options={namespaces} />
+      </div>
+      <button className="button-primary">New repository</button>
     </div>
-    <button className="button-primary">New repository</button>
   </header>;
 }

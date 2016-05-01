@@ -1,13 +1,15 @@
 "use strict";
 
+
 function dice(from, to) {
   const rollCount = 3,
-        size  = ((to - from) / rollCount),
-        rolls = Array(rollCount).fill(size);
+        size      = ((to - from) / rollCount),
+        rolls     = Array(rollCount).fill(size);
 
   return from + rolls.map((r) => Math.random() * size | 0)
     .reduce((prev, cur) => prev + cur, 0);
 }
+
 
 function sample(array, count) {
   const sample = Array(count || 1)
