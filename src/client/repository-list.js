@@ -5,7 +5,7 @@ export default function RepositoryList(props) {
   if (!props.repositories) return <Throbber />;
 
   return <ul>
-    {props.repositories.map(
+    {props.repositories.items.map(
       (repo) => <RepositoryListItem key={repo.id} {...repo} />
     )}
   </ul>;

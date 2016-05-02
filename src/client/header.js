@@ -8,6 +8,7 @@ export default function Header(props) {
 
   const onChange = (event) => {
     namespace(event.target.value);
+    props.offset(0);
     global.redraw();
   };
 

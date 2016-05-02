@@ -2,11 +2,35 @@
   text-align: center;
 
   button {
-    padding: 0 @baseline;
+    font-size: @font-size-0;
+    min-width: @baseline * 3;
+    min-height: @baseline * 3;
+    line-height: @baseline * 3;
+    vertical-align: middle;
+    padding: 0;
     margin-right: @baseline;
 
     &:last-child {
       margin-right: 0;
     }
+
+    &:disabled {
+      color: @foreground-med;
+      pointer-events: none;
+      opacity: .5;
+    }
+  }
+
+  i {
+    pointer-events: none;
+  }
+
+  span {
+    margin-right: @baseline;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: .5;
   }
 }

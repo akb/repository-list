@@ -6,7 +6,7 @@ export default function Scene(props) {
   let Tab = (props) =>
     util.cond(props.tab())
       .when('repositories', <Repositories {...props.repositories} />)
-      .else(<div className="error">{"This tab hasn't been implemented"}</div>);
+      .else(<section className="error">{"This tab hasn't been implemented"}</section>);
 
   return <div className="scene">
     <SideNav tab={props.tab} />

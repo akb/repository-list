@@ -14,15 +14,22 @@ server.use(express.static('public'));
 
 
 server.get('/api/repositories', (request, response) => {
-  const namespace = request.query.namespace;
+  const namespace = request.query.namespace,
+        offset    = parseInt(request.query.offset) || 0,
+        size      = parseInt(request.query.size)   || 10;
+
   let filtered;
   if (namespace) {
     filtered = repositories.filter((r) => r.namespace === namespace);
   } else {
     filtered = repositories;
   }
+
   setTimeout(() => {
-    response.status(200).json(filtered)
+    response.status(200).json({
+      total: filtered.length,
+      items: filtered.slice(offset, offset + size)
+    });
   }, 3000);
 });
 
@@ -30,7 +37,7 @@ server.get('/api/repositories', (request, response) => {
 server.get('/api/namespaces', (request, response) => {
   setTimeout(() => {
     response.status(200).json(namespaces.sort());
-  }, 2000);
+  }, 1000);
 });
 
 
