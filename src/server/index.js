@@ -1,6 +1,8 @@
 "use strict";
 
-const express  = require('express'),
+const fs       = require('fs'),
+      https    = require('https'),
+      express  = require('express'),
       morgan   = require('morgan'),
       session  = require('express-session'),
       passport = require('passport');
@@ -24,8 +26,12 @@ server.use(express.static(environment.staticPath));
 server.use('/auth', auth);
 server.use('/api', api);
 
+const options = {
+  ca   : fs.readFileSync(environment.sslCACertPath),
+  cert : fs.readFileSync(environment.sslCertPath),
+  key  : fs.readFileSync(environment.sslKeyPath)
+};
 
-server.listen(
-  environment.listenPort, () =>
-    console.log(`server listening on port ${environment.listenPort}`)
+https.createServer(options, server).listen(environment.listenPort, () =>
+  console.log(`server listening on port ${environment.listenPort}`)
 );

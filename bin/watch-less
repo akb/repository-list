@@ -13,7 +13,7 @@ const chokidar = require('graceful-chokidar'),
 const BASE_PATH        = path.resolve(__dirname, '..') + '/',
       WATCH_PATH       = path.join(BASE_PATH, 'src', 'less'),
       SOURCE_PATH      = path.resolve(WATCH_PATH, 'index.less'),
-      DESTINATION_PATH = path.resolve(BASE_PATH, 'public', 'index.css');
+      DESTINATION_PATH = path.resolve(BASE_PATH, 'build', 'public', 'index.css');
 
 
 function compile(filepath, stats) {

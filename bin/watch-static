@@ -21,7 +21,7 @@ const WATCH_PATHS = [
 ];
 
 
-const PUBLIC_PATH = path.resolve(BASE_PATH, 'public');
+const PUBLIC_PATH = path.resolve(BASE_PATH, 'build', 'public');
 
 
 function copy(source, stats) {

@@ -4,10 +4,17 @@
 # It may be copied to bin/environment.local for local development purposes
 
 # Required
+export SCHEME=
+export DOMAIN=
+
 export SESSION_SECRET=
 export GOOGLE_CLIENT_ID=
 export GOOGLE_CLIENT_SECRET=
 export GOOGLE_CALLBACK_URL=
+
+export SSL_CA_CERT_PATH=
+export SSL_CERT_PATH=
+export SSL_KEY_PATH=
 
 # Optional
 export STATIC_PATH=
