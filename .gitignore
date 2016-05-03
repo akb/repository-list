@@ -3,3 +3,4 @@ public
 build
 tmp
 *~
+bin/environment.local
