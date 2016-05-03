@@ -2,7 +2,7 @@ import * as ReactDOM from 'react-dom';
 
 import './global';
 
-import Scene from './scene';
+import {Scene} from './scene';
 
 
 const scene = {
