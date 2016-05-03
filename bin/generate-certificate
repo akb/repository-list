@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+source $BASEPATH/environment.local
+
+SSL_PATH=$BASEPATH/build/ssl
+CA_KEY_PATH=$SSL_PATH/ca-key.pem
+CA_CRT_PATH=$SSL_PATH/ca-crt.pem
+KEY_PATH=$SSL_PATH/key.pem
+CSR_PATH=$SSL_PATH/csr.pem
+CERT_PATH=$SSL_PATH/cert.pem
+PUBKEY_PATH=$SSL_PATH/pub.pem
+
+openssl genrsa -out $CA_KEY_PATH 2048
+openssl req \
+  -x509 \
+  -new \
+  -nodes \
+  -key $CA_KEY_PATH \
+  -days 1024 \
+  -out $CA_CRT_PATH \
+  -subj "/C=US/ST=California/L=Pacifica/O=Self Signing Authority/CN=example.com"
+
+openssl genrsa -out $KEY_PATH 2048
+
+openssl req -new \
+  -key $KEY_PATH \
+  -out $CSR_PATH \
+  -subj "/C=US/ST=California/L=Pacifica/O=Self Signed Software/CN=${DOMAIN}"
+
+openssl x509 -req \
+  -in $CSR_PATH \
+  -CA $CA_CRT_PATH \
+  -CAkey $CA_KEY_PATH \
+  -CAcreateserial \
+  -out $CERT_PATH \
+  -days 9999
+
+openssl rsa -in $KEY_PATH -pubout -out $PUBKEY_PATH

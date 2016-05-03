@@ -4,6 +4,8 @@ BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
 source bin/environment.local
 
+bin/clean
+
 bin/build-css
 bin/build-vendor
 

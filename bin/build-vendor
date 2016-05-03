@@ -2,7 +2,7 @@
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
-DESTINATION_PATH=$BASEPATH/public/vendor.js
+DESTINATION_PATH=$BASEPATH/build/public/vendor.js
 
 $BASEPATH/node_modules/browserify/bin/cmd.js \
   --outfile $DESTINATION_PATH \

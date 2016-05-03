@@ -3,7 +3,7 @@
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
 SOURCE_PATH=$BASEPATH/src/less/index.less
-DESTINATION_PATH=$BASEPATH/public/index.css
+DESTINATION_PATH=$BASEPATH/build/public/index.css
 
 
 $BASEPATH/node_modules/less/bin/lessc \

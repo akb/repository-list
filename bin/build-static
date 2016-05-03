@@ -3,6 +3,6 @@
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
 cp $BASEPATH/node_modules/normalize.css/normalize.css \
-   $BASEPATH/public/normalize.css
+   $BASEPATH/build/public/normalize.css
 
-cp -R $BASEPATH/src/static/* $BASEPATH/public/
+cp -R $BASEPATH/src/static/* $BASEPATH/build/public/
