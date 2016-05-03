@@ -15,7 +15,7 @@ export default function Repositories(props) {
 
   const repositories = api.repositories(query);
 
-  return <section className="repositories" title="Repositories">
+  return <section className="repositories">
     <Header namespace={props.namespace}
             offset={props.offset} />
     <RepositoryList repositories={repositories} />

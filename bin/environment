@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# NOTE: Do not add values to this file, it only serves as a reference.
+# It may be copied to bin/environment.local for local development purposes
+
+# Required
+export SESSION_SECRET=
+export GOOGLE_CLIENT_ID=
+export GOOGLE_CLIENT_SECRET=
+export GOOGLE_CALLBACK_URL=
+
+# Optional
+export STATIC_PATH=
+export LISTEN_PORT=
+export INJECT_MIN_LATENCY=
+export INJECT_MAX_LATENCY=

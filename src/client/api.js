@@ -18,11 +18,16 @@ export function get(path, query) {
   const request = new XMLHttpRequest();
   requests[url] = request;
 
-  request.addEventListener('load', () => {
-    api.cache.set(url, JSON.parse(request.responseText));
-    delete requests[url];
-    global.redraw();
+  request.addEventListener('load', (event) => {
+    if (request.status === 200) {
+      api.cache.set(url, JSON.parse(request.responseText));
+      delete requests[url];
+      global.redraw();
+    } else if (request.status === 403) {
+      window.location = '/auth/google';
+    }
   });
+
   request.open('GET', url);
   request.send();
 }
