@@ -16,5 +16,4 @@ for (let i = 0; i < random.dice(5, 15); i++) {
   namespaces.push(generate());
 }
 
-
 module.exports = namespaces;

@@ -14,10 +14,11 @@ export function prop(value) {
 // `resolve` accepts a `prop` function or a value and returns either the value
 // or the value returned by the function
 export function resolve(prop) {
-  if (typeof prop === 'function')
+  if (typeof prop === 'function') {
     return prop();
-  else
+  } else {
     return prop;
+  }
 }
 
 // `range` returns an array of consecutive integers from 0 to `count` - 1
@@ -34,6 +35,14 @@ export function merge(a, b) {
   const out = {}, aKeys = Object.keys(a), bKeys = Object.keys(b);
   aKeys.forEach((k) => out[k] = a[k]);
   bKeys.forEach((k) => out[k] = b[k]);
+  return out;
+}
+
+// `pick` creates a new object containing only the specified members of the
+// passed-in object
+export function pick(obj) {
+  const out = {}, keys = [].slice.call(arguments, 1);
+  keys.forEach(key => out[key] = obj[key]);
   return out;
 }
 

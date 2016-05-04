@@ -1,6 +1,7 @@
 "use strict";
 
-const express = require('express');
+const express    = require('express'),
+      bodyParser = require('body-parser');
 
 const auth         = require('./auth'),
       namespaces   = require('./namespaces'),
@@ -9,13 +10,16 @@ const auth         = require('./auth'),
 
 const api = express();
 
+api.use(bodyParser.json());
 
-function latency() {
-  return random.dice(
+
+api.use((request, response, done) => {
+  const delay = random.dice(
     environment.injectMinLatency,
     environment.injectMaxLatency
   );
-}
+  setTimeout(done, delay);
+});
 
 
 api.get('/repositories', auth.authenticate, (request, response) => {
@@ -25,24 +29,41 @@ api.get('/repositories', auth.authenticate, (request, response) => {
 
   let filtered;
   if (namespace) {
-    filtered = repositories.filter((r) => r.namespace === namespace);
+    filtered = repositories.forNamespace(namespace);
   } else {
-    filtered = repositories;
+    filtered = repositories.all();
   }
 
-  setTimeout(() => {
-    response.status(200).json({
-      total: filtered.length,
-      items: filtered.slice(offset, offset + size)
-    });
-  }, latency());
+  response.status(200).json({
+    total: filtered.length,
+    items: filtered.slice(offset, offset + size)
+  });
+});
+
+
+api.put('/repositories/:namespace/:name', auth.authenticate, (request, response) => {
+  const repository = repositories
+    .findOrCreate(request.namespace, request.name)
+    .update(request.body);
+
+  const validationErrors = repository.validate();
+
+  if (validationErrors.length) {
+    response.status(400).json(validationErrors);
+  } else {
+    const isUpdate = repositories.save(repository);
+    if (isUpdate) {
+      response.status(200);
+    } else {
+      response.status(201);
+    }
+    response.json(repository);
+  }
 });
 
 
 api.get('/namespaces', auth.authenticate, (request, response) => {
-  setTimeout(() => {
-    response.status(200).json(namespaces.sort());
-  }, latency());
+  response.status(200).json(namespaces.sort());
 });
 
 

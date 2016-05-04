@@ -1,6 +1,11 @@
 export default function SideNav(props) {
   var tab = props.tab;
 
+  const onClick = (name) => {
+    tab(name);
+    global.redraw();
+  };
+
   const NavItem = (props) => {
     let itemClass;
     if (props.name === tab()) {
@@ -9,12 +14,9 @@ export default function SideNav(props) {
       itemClass = 'nav-item';
     }
 
-    const onClick = () => {
-      tab(props.name);
-      redraw();
-    };
-
-    return <div className={itemClass} title={props.title} onClick={onClick}>
+    return <div className={itemClass}
+                title={props.title}
+                onClick={onClick.bind(null, props.name)}>
       <i className={`fa fa-${props.icon}`} aria-hidden="true"></i>
     </div>;
   };

@@ -10,7 +10,14 @@ const scene = {
   repositories: {
     namespace : util.prop(''),
     offset    : util.prop(0),
-    total     : util.prop(1)
+    total     : util.prop(1),
+    form: {
+      visible     : util.prop(false),
+      namespace   : util.prop(''),
+      name        : util.prop(''),
+      isPrivate   : util.prop(false),
+      description : util.prop('')
+    }
   }
 };
 

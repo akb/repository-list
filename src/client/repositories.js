@@ -1,4 +1,5 @@
 import Header from './header';
+import RepositoryForm from './repository-form';
 import RepositoryList from './repository-list';
 import Paginator from './paginator';
 
@@ -16,8 +17,8 @@ export default function Repositories(props) {
   const repositories = api.repositories(query);
 
   return <section className="repositories">
-    <Header namespace={props.namespace}
-            offset={props.offset} />
+    <Header {...props} />
+    {props.form.visible() && <RepositoryForm {...props.form} />}
     <RepositoryList repositories={repositories} />
     <Paginator collection={repositories}
                pageSize={pageSize}
