@@ -2,14 +2,14 @@
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
-source $BASEPATH/environment.local
+source $BASEPATH/bin/environment.local
 
 SSL_PATH=$BASEPATH/build/ssl
 CA_KEY_PATH=$SSL_PATH/ca-key.pem
 CA_CRT_PATH=$SSL_PATH/ca-crt.pem
 KEY_PATH=$SSL_PATH/key.pem
 CSR_PATH=$SSL_PATH/csr.pem
-CERT_PATH=$SSL_PATH/cert.pem
+CERT_PATH=$SSL_PATH/crt.pem
 PUBKEY_PATH=$SSL_PATH/pub.pem
 
 openssl genrsa -out $CA_KEY_PATH 2048
