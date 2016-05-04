@@ -11,6 +11,7 @@ Repository List requires the following of the local system:
 
 - A Unix-like operating system
 - bash
+- openssl (for generating self-signed cert for https)
 - NodeJS/npm
 - nvm
 
@@ -41,7 +42,8 @@ system and development server.
 for changes in the source code. When code is updated, the appropriate build
 step will be automatically run to use the new code. Specifically:
 
-- Upon starting the server, vendor JS will be bundled and copied to the server
+- A CA root certificate and server certificate will be generated
+- Vendor JS will be bundled and copied to the server
   (handled by `bin/build-vendor`)
 - Updating the files in `src/static` will update them on the server (handled by
   `bin/watch-static`)
