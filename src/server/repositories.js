@@ -86,9 +86,12 @@ function generate() {
   return new Repository(props);
 };
 
+const numRepositories = random.dice(
+  environment.generateMinRepositories,
+  environment.generateMaxRepositories
+), repositories = {};
 
-const repositories = {};
-for (let i = 0; i < random.dice(100, 500); i++) {
+for (let i = 0; i < numRepositories; i++) {
   const repository = generate();
   repositories[repository.id] = repository;
 }

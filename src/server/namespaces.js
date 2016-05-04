@@ -11,8 +11,12 @@ function generate() {
   ].join('-').toLowerCase());
 }
 
-const namespaces = [];
-for (let i = 0; i < random.dice(5, 15); i++) {
+const numNamespaces = random.dice(
+  environment.generateMinNamespaces,
+  environment.generateMaxNamespaces
+), namespaces = [];
+
+for (let i = 0; i < numNamespaces; i++) {
   namespaces.push(generate());
 }
 
