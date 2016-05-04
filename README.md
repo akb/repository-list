@@ -4,6 +4,18 @@ Repository List
 Repository List is a web application for browsing and filtering Docker
 repositories.
 
+TL;DR
+-----
+
+    npm install -g nvm
+    nvm install
+    npm install
+    cp bin/environment bin/environment.local
+    vi bin/environment.local
+    GOOGLE_CLIENT_ID="foo"     # replace with real client id
+    GOOGLE_CLIENT_SECRET="bar" # replace with real client secret
+    bin/serve-local
+
 Installation
 ------------
 
