@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: @baseline * 2;
   width: 100%;
+  height: 100vh;
 
   header {
     flex-grow: 0;
@@ -25,10 +26,15 @@
     }
   }
 
-  > ul {
+  .repository-list {
     flex-grow: 1;
     flex-shrink: 0;
+    flex-basis: auto;
+    height: 0; // hack to get flexbox to work right with scrolling
     overflow: auto;
+  }
+
+  ul {
     padding: 0;
     margin: 0 @baseline * 2 @baseline * 2 @baseline * 2;
   }

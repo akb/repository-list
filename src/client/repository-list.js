@@ -4,11 +4,13 @@ import Throbber from './throbber';
 export default function RepositoryList(props) {
   if (!props.repositories) return <Throbber />;
 
-  return <ul>
-    {props.repositories.items.map(
-      (repo) => <RepositoryListItem key={repo.id} {...repo} />
-    )}
-  </ul>;
+  return <div className="repository-list">
+    <ul>
+      {props.repositories.items.map(
+        (repo) => <RepositoryListItem key={repo.id} {...repo} />
+      )}
+    </ul>
+  </div>;
 }
 
 const RepositoryListItem = (props) =>
