@@ -1,0 +1,40 @@
+.repository-form-field-row {
+  .layout-split;
+  margin-top: @baseline * 2;
+  margin-bottom: @baseline;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.repository-form-field {
+  display: flex;
+  margin-right: @baseline;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  label {
+    color: @foreground-med;
+  }
+
+  label, input[type=checkbox] {
+    margin-right: @baseline;
+    line-height: @baseline * 3;
+    height: @baseline * 3;
+    vertical-align: middle;
+  }
+
+  input {
+    &[type=text] {
+      padding: 0 @baseline;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+  }
+}

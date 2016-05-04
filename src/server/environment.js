@@ -1,7 +1,7 @@
 const variables = [
   { name:'SCHEME',               as:'scheme' },
   { name:'DOMAIN',               as:'domain' },
-  { name:'STATIC_PATH',          as:'staticPath',       default:'public' },
+  { name:'STATIC_PATH',          as:'staticPath',       default:'build/public' },
   { name:'LISTEN_PORT',          as:'listenPort',       default:7812 },
   { name:'INJECT_MIN_LATENCY',   as:'injectMinLatency', default:100 },
   { name:'INJECT_MAX_LATENCY',   as:'injectMaxLatency', default:1000 },

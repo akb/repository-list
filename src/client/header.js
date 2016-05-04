@@ -12,18 +12,27 @@ export default function Header(props) {
     global.redraw();
   };
 
+  const show = () => {
+    props.form.visible(true);
+    global.redraw();
+  };
+
   return <header>
     <div className="layout-split">
       <div className="filter">
         <label for="filter-by">Filter&nbsp;by</label>
         <SelectBox
           name="filter-by"
-          defaultValue={namespace() || 0}
+          value={namespace() || 0}
           onChange={onChange}
           nullOption="All accounts"
           options={namespaces} />
       </div>
-      <button className="button-primary">New repository</button>
+      {!props.form.visible() &&
+        <button className="button-primary" onClick={show}>
+          New repository
+        </button>
+      }
     </div>
   </header>;
 }
