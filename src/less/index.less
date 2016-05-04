@@ -64,8 +64,10 @@ button.button-primary {
   width: 100vw;
 
   > nav {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: @baseline * 10;
     padding-top: @baseline * 2;
-    width: @baseline * 12;
     border-right: 1px solid @foreground-light;
   }
 }

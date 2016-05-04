@@ -19,7 +19,7 @@ export default function SideNav(props) {
     </div>;
   };
 
-  return <nav>
+  return <nav className="side-nav">
     <NavItem name="dashboard" title="Dashboard" icon="tachometer" />
     <NavItem name="repositories" title="Repositories" icon="tasks" />
     <NavItem name="data-centers" title="Data Centers" icon="building" />
