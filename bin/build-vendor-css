@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+CLIENT_PATH=$BASEPATH/build/client
+mkdir -p $CLIENT_PATH
+
+FONTAWESOME_PATH=$BASEPATH/node_modules/font-awesome/css/font-awesome.css
+NORMALIZECSS_PATH=$BASEPATH/node_modules/normalize.css/normalize.css
+DESTINATION_PATH=$CLIENT_PATH/vendor.css
+
+if [[ $MINIFY == true ]]; then
+  cat $FONTAWESOME_PATH $NORMALIZECSS_PATH | \
+    $BASEPATH/node_modules/clean-css/bin/cleancss -o $DESTINATION_PATH
+else
+  cat $FONTAWESOME_PATH $NORMALIZECSS_PATH > $DESTINATION_PATH
+fi

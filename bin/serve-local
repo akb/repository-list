@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+SERVER_PATH=$BASEPATH/src/server
 
-source bin/environment.local
+source $BASEPATH/bin/environment.local
 
-bin/clean
-bin/generate-certificate
+$BASEPATH/bin/clean
+$BASEPATH/bin/generate-certificate
 
-bin/build-css
-bin/build-vendor
-bin/build-static
+$BASEPATH/bin/build-vendor-css
+$BASEPATH/bin/build-vendor-js
+$BASEPATH/bin/build-css
+$BASEPATH/bin/build-static
 
-bin/watch-client &
-bin/watch-less &
-bin/watch-static &
+$BASEPATH/bin/watch-client &
+$BASEPATH/bin/watch-less &
+$BASEPATH/bin/watch-static &
 
-$BASEPATH/node_modules/nodemon/bin/nodemon.js src/server/index.js &
+$BASEPATH/node_modules/nodemon/bin/nodemon.js $SERVER_PATH/index.js \
+  --watch $SERVER_PATH &
 
 wait
 exit 0

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+CLIENT_PATH=$BASEPATH/build/client
+mkdir -p $CLIENT_PATH
+
+DESTINATION_PATH=$CLIENT_PATH/vendor.js
+
+if [[ $MINIFY == true ]]; then
+  $BASEPATH/node_modules/browserify/bin/cmd.js \
+    --outfile $DESTINATION_PATH \
+    --require lru-cache \
+    --require react-dom \
+    --require react
+  $BASEPATH/node_modules/uglify-js/bin/uglifyjs $DESTINATION_PATH \
+    -o $DESTINATION_PATH --overwrite
+else
+  $BASEPATH/node_modules/browserify/bin/cmd.js \
+    --outfile $DESTINATION_PATH \
+    --debug \
+    --require lru-cache \
+    --require react-dom \
+    --require react
+fi

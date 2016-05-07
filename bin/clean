@@ -2,5 +2,5 @@
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
+rm -rf $BASEPATH/tmp
 rm -rf $BASEPATH/build
-mkdir -p $BASEPATH/build/{ssl,public}

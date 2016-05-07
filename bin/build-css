@@ -2,10 +2,17 @@
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
+CLIENT_PATH=$BASEPATH/build/client
+mkdir -p $CLIENT_PATH
+
 SOURCE_PATH=$BASEPATH/src/less/index.less
-DESTINATION_PATH=$BASEPATH/build/public/index.css
+DESTINATION_PATH=$CLIENT_PATH/index.css
 
-
-$BASEPATH/node_modules/less/bin/lessc \
-  --source-map-map-inline \
-  $SOURCE_PATH $DESTINATION_PATH
+if [[ $MINIFY == true ]]; then
+  $BASEPATH/node_modules/less/bin/lessc $SOURCE_PATH | \
+    $BASEPATH/node_modules/clean-css/bin/cleancss -o $DESTINATION_PATH
+else
+  $BASEPATH/node_modules/less/bin/lessc \
+    --source-map-map-inline \
+    $SOURCE_PATH $DESTINATION_PATH
+fi

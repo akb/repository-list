@@ -2,14 +2,29 @@
 
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
-SOURCE_PATH=$BASEPATH/src/client/index.js
-DESTINATION_PATH=$BASEPATH/build/public/index.js
+CLIENT_PATH=$BASEPATH/build/client
+mkdir -p $CLIENT_PATH
 
-$BASEPATH/node_modules/browserify/bin/cmd.js $SOURCE_PATH \
-  --outfile $DESTINATION_PATH \
-  --verbose \
-  --debug \
-  --transform [ babelify --presets [ es2015 react ] ] \
-  --exclude lru-cache \
-  --exclude react-dom \
-  --exclude react
+SOURCE_PATH=$BASEPATH/src/client/index.js
+DESTINATION_PATH=$CLIENT_PATH/index.js
+
+if [[ $MINIFY == true  ]]; then
+  $BASEPATH/node_modules/browserify/bin/cmd.js $SOURCE_PATH \
+    --outfile $DESTINATION_PATH \
+    --verbose \
+    --transform [ babelify --presets [ es2015 react ] ] \
+    --exclude lru-cache \
+    --exclude react-dom \
+    --exclude react
+  $BASEPATH/node_modules/uglify-js/bin/uglifyjs $DESTINATION_PATH \
+    -o $DESTINATION_PATH --overwrite
+else
+  $BASEPATH/node_modules/browserify/bin/cmd.js $SOURCE_PATH \
+    --outfile $DESTINATION_PATH \
+    --verbose \
+    --debug \
+    --transform [ babelify --presets [ es2015 react ] ] \
+    --exclude lru-cache \
+    --exclude react-dom \
+    --exclude react
+fi
