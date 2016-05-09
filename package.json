@@ -1,5 +1,5 @@
 {
-  "name": "docker-repos",
+  "name": "repository-list",
   "version": "0.0.1",
   "description": "Repository List: A web application for browsing Docker repositories",
   "scripts": {
