@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+SOURCE_PATH=$BASEPATH/src/server
+SERVER_PATH=$BASEPATH/build
+
+mkdir -p $SERVER_PATH
+
+cp -R $SOURCE_PATH/* $SERVER_PATH
+cp $BASEPATH/package.json $SERVER_PATH
+pushd $SERVER_PATH
+npm install --production
+popd

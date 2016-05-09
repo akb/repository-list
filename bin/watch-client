@@ -3,7 +3,7 @@
 BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 
 SOURCE_PATH=$BASEPATH/src/client/index.js
-DESTINATION_PATH=$BASEPATH/build/public/index.js
+DESTINATION_PATH=$BASEPATH/build/client/index.js
 
 
 $BASEPATH/node_modules/watchify/bin/cmd.js $SOURCE_PATH \

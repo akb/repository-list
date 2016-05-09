@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+function get_package_key {
+  node -p "JSON.parse(require('fs').readFileSync('$BASEPATH/package.json')).$1"
+}
+
+PACKAGE_NAME=$(get_package_key name)
+PACKAGE_VERSION=$(get_package_key version)
+
+IMAGE_NAME="${PACKAGE_NAME}:${PACKAGE_VERSION}"
+DIST_PATH=$BASEPATH/dist
+IMAGE_PATH="${DIST_PATH}/${PACKAGE_NAME}-${PACKAGE_VERSION}.docker.tar"
+
+mkdir -p $DIST_PATH
+docker build -t $IMAGE_NAME $BASEPATH
+docker save $IMAGE_NAME > $IMAGE_PATH

@@ -9,7 +9,7 @@ export SCHEME="https"
 export LISTEN_PORT="7812"
 export DOMAIN="localhost:$LISTEN_PORT"
 
-export STATIC_PATH="${BASEPATH}/build/public"
+export CLIENT_PATH="${BASEPATH}/build/client"
 
 export SSL_CA_CERT_PATH="${BASEPATH}/build/ssl/ca-crt.pem"
 export SSL_CERT_PATH="${BASEPATH}/build/ssl/crt.pem"

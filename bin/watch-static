@@ -21,7 +21,7 @@ const WATCH_PATHS = [
 ];
 
 
-const PUBLIC_PATH = path.resolve(BASE_PATH, 'build', 'public');
+const CLIENT_PATH = path.resolve(BASE_PATH, 'build', 'client');
 
 
 function copy(source, stats) {
@@ -37,9 +37,9 @@ function copy(source, stats) {
 
 function destination(p) {
   if (p.match(new RegExp(`^${DEPENDENCY_BASE_PATH}`))) {
-    return path.join(PUBLIC_PATH, path.basename(p));
+    return path.join(CLIENT_PATH, path.basename(p));
   } else if (p.match(new RegExp(`^${STATIC_BASE_PATH}`))) {
-    return path.join(PUBLIC_PATH, p.replace(STATIC_BASE_PATH, ''));
+    return path.join(CLIENT_PATH, p.replace(STATIC_BASE_PATH, ''));
   } else {
     return p;
   }
