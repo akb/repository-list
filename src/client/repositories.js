@@ -5,7 +5,7 @@ import Paginator from './paginator';
 
 
 export default function Repositories(props) {
-  const pageSize  = 10,
+  const pageSize  = 25,
         query     = {},
         namespace = props.namespace(),
         offset    = props.offset();
